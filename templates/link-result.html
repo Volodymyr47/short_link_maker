@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{title}}
+{% endblock %}
+
+{% block content %}
+{% if err_message %}
+ <div style="color: red;">
+   {{err_message}}
+ </div>
+{% else %}
+
+  <h1>{{title}}</h1>
+  {% if new_link %}
+   <strong>{{new_link}}</strong>
+  {% endif %}
+  <p>The old link is: <br>
+   {{old_link}}</p>
+  <br><br>
+   <a href="/">Create new link</a>
+{% endif %}
+{% endblock %}
