@@ -8,8 +8,10 @@
 *.pyo
 *.so
 *.swp
+*.env
 *.tar.gz
 *~
+*_old*
 .DS_Store
 .Python
 .cache

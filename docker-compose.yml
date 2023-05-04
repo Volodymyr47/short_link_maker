@@ -1,0 +1,27 @@
+services:
+  web:
+    env_file: .env
+    build: .
+    command: python main.py
+    ports:
+      - "80:8080"
+    environment:
+      DATABASE_URL: "postgresql://${POSTGRES_USER}:${POSTGRES_PASSWD}@postgres:5432/slm_db"
+
+
+  postgres:
+    env_file: .env
+    image: "postgres"
+    environment:
+      POSTGRES_DB: 'slm_db'
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWD}
+    ports:
+        - "5432:5432"
+    hostname: "postgres"
+
+  telegram_bot:
+    env_file: .env
+    build: .
+    command: python telegram_bot.py
+    environment:
+       DATABASE_URL: "postgresql://${POSTGRES_USER}:${POSTGRES_PASSWD}@postgres:5432/slm_db"
